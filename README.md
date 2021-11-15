@@ -2,8 +2,6 @@
 
 1. [Overview](#link_overview)
 2. [Quickstart](#link_quickstart)
-3. [How to use](#link_using)
-    * [InventoryGui](#link_inventory_gui)
 
 ## <a name="link_overview"></a>Overview
 Make a Minecraft-Gui with PaperMC as fast and effective as possible.
