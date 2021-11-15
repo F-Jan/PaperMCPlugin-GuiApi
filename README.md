@@ -7,7 +7,11 @@
 Make a Minecraft-Gui with PaperMC as fast and effective as possible.
 
 ## <a name="link_quickstart"></a>Quickstart
-To start download the .jar file and put it into your plugin folder on your PaperMC server and also add it to your Java project as Library.
+- Clone the Repository
+- run ```.\gradlew build```
+- copy the file ```.\build\lips\PaperMcPlugin-GuiApi-1.0.jar``` into your plugin folder
+- add the file ```.\build\lips\PaperMcPlugin-GuiApi-1.0.jar``` to your Java project as Library
+
 Now you can create an InventoryGui and add GuiObjects like this.
 ```java
 //Create an InventoryGui
