@@ -1,0 +1,26 @@
+package com.github.papermcplugin_guiapi;
+
+import com.github.papermcplugin_guiapi.listener.InventoryListener;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
+
+/**
+ * The Main class of the Api.
+ * Don't use this for your own plugin!
+ *
+ * @author F-Jan
+ */
+public final class Main extends JavaPlugin {
+
+    /**
+     * The startup logic of the plugin.
+     *
+     * The InventoryListener get registered here.
+     *
+     */
+    @Override
+    public void onEnable() {
+        Bukkit.getPluginManager().registerEvents(new InventoryListener(), this);
+    }
+
+}

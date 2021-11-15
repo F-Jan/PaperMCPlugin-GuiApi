@@ -1,0 +1,6 @@
+name: PaperMcPlugin-GuiApi
+version: '${version}'
+main: com.github.papermcplugin_guiapi.Main
+api-version: 1.17
+authors: [ F-Jan ]
+description: A Api for Gui's on Survival And More
