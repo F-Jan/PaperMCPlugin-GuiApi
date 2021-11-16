@@ -48,7 +48,9 @@ public class InventoryListener implements Listener {
                         itemStack = event.getCursor().clone();
                     }
 
-                    guiObject.callPlaceEvents((Player) event.getWhoClicked(), itemStack.clone());
+                    if (itemStack.getType() != Material.AIR) {
+                        guiObject.callPlaceEvents((Player) event.getWhoClicked(), itemStack.clone());
+                    }
                 } else {
                     event.setCancelled(true);
                 }
