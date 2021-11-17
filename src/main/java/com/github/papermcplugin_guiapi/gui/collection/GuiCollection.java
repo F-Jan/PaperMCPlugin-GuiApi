@@ -68,6 +68,15 @@ public class GuiCollection {
     }
 
     /**
+     * Remove a GuiObject form the GuiCollection
+     *
+     * @param guiObjectToRemove
+     */
+    public void removeGuiObject(GuiObject guiObjectToRemove) {
+        guiObjects.remove(guiObjectToRemove);
+    }
+
+    /**
      * Calculate a slot of the collection to an actual slot of an Inventory
      *
      * @param collectionSlot
