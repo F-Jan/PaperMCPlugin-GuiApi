@@ -2,6 +2,8 @@ package com.github.papermcplugin_guiapi.listener;
 
 import com.github.papermcplugin_guiapi.gui.InventoryGui;
 import com.github.papermcplugin_guiapi.gui.object.PlacementGuiObject;
+import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -34,27 +36,29 @@ public class InventoryListener implements Listener {
             if (event.getInventory().getSize() > event.getRawSlot()) {
                 InventoryGui inventoryGui = guiInventoryMap.get(event.getInventory());
 
-                if (inventoryGui.getGuiObjects()[event.getRawSlot()] instanceof PlacementGuiObject guiObject) {
-                    ItemStack itemStack = new ItemStack(Material.AIR);
+                if (event.getRawSlot() >= 0) {
+                    if (inventoryGui.getGuiObjects()[event.getRawSlot()] instanceof PlacementGuiObject guiObject) {
+                        ItemStack itemStack = new ItemStack(Material.AIR);
 
-                    if (event.getAction() == InventoryAction.PLACE_ONE) {
-                        itemStack = event.getCursor().clone();
-                        if (event.getCurrentItem() == null) {
-                            itemStack.setAmount(1);
-                        } else {
-                            itemStack.setAmount(1 + event.getCurrentItem().getAmount());
+                        if (event.getAction() == InventoryAction.PLACE_ONE) {
+                            itemStack = event.getCursor().clone();
+                            if (event.getCurrentItem() == null) {
+                                itemStack.setAmount(1);
+                            } else {
+                                itemStack.setAmount(1 + event.getCurrentItem().getAmount());
+                            }
+                        } else if (event.getAction() == InventoryAction.PLACE_ALL || event.getAction() == InventoryAction.SWAP_WITH_CURSOR) {
+                            itemStack = event.getCursor().clone();
                         }
-                    } else if (event.getAction() == InventoryAction.PLACE_ALL || event.getAction() == InventoryAction.SWAP_WITH_CURSOR) {
-                        itemStack = event.getCursor().clone();
-                    }
 
-                    if (itemStack.getType() != Material.AIR) {
-                        guiObject.callPlaceEvents((Player) event.getWhoClicked(), itemStack.clone());
+                        if (itemStack.getType() != Material.AIR) {
+                            guiObject.callPlaceEvents((Player) event.getWhoClicked(), itemStack.clone());
+                        }
+                    } else {
+                        event.setCancelled(true);
                     }
-                } else {
-                    event.setCancelled(true);
+                    inventoryGui.callClickEvent(event.getRawSlot(), (Player) event.getWhoClicked());
                 }
-                inventoryGui.callClickEvent(event.getRawSlot(), (Player) event.getWhoClicked());
             }
         }
     }
@@ -68,9 +72,11 @@ public class InventoryListener implements Listener {
     public void onPlayerDragInventory(InventoryDragEvent event) {
         if (guiInventoryMap.containsKey(event.getInventory())) {
             for (int slot: event.getRawSlots().toArray(new  Integer[event.getRawSlots().toArray().length])) {
-                if (event.getInventory().getSize() > slot) {
-                    event.setCancelled(true);
-                    guiInventoryMap.get(event.getInventory()).callClickEvent(slot, (Player) event.getWhoClicked());
+                if (slot >= 0) {
+                    if (event.getInventory().getSize() > slot) {
+                        event.setCancelled(true);
+                        guiInventoryMap.get(event.getInventory()).callClickEvent(slot, (Player) event.getWhoClicked());
+                    }
                 }
             }
         }
