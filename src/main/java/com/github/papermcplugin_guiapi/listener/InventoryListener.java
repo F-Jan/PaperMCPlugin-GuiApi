@@ -2,8 +2,6 @@ package com.github.papermcplugin_guiapi.listener;
 
 import com.github.papermcplugin_guiapi.gui.InventoryGui;
 import com.github.papermcplugin_guiapi.gui.object.PlacementGuiObject;
-import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
