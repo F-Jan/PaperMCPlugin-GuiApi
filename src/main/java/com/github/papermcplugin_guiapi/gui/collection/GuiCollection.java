@@ -6,6 +6,7 @@ import com.github.papermcplugin_guiapi.gui.object.GuiObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class GuiCollection {
@@ -74,6 +75,13 @@ public class GuiCollection {
      */
     public void removeGuiObject(GuiObject guiObjectToRemove) {
         guiObjects.remove(guiObjectToRemove);
+    }
+
+    /**
+     * Sort the GuiObjects after Material
+     */
+    public void sortByMaterial() {
+        guiObjects.sort(Comparator.comparing(guiObject -> guiObject.getItemStack().getType().toString()));
     }
 
     /**
