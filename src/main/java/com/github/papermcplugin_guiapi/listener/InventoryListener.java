@@ -2,7 +2,6 @@ package com.github.papermcplugin_guiapi.listener;
 
 import com.github.papermcplugin_guiapi.gui.InventoryGui;
 import com.github.papermcplugin_guiapi.gui.object.PlacementGuiObject;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,20 +35,17 @@ public class InventoryListener implements Listener {
 
                 if (event.getRawSlot() >= 0) {
                     if (inventoryGui.getGuiObjects()[event.getRawSlot()] instanceof PlacementGuiObject guiObject) {
-                        ItemStack itemStack = new ItemStack(Material.AIR);
-
                         if (event.getAction() == InventoryAction.PLACE_ONE) {
-                            itemStack = event.getCursor().clone();
+                            ItemStack itemStack = event.getCursor().clone();
+
                             if (event.getCurrentItem() == null) {
                                 itemStack.setAmount(1);
                             } else {
                                 itemStack.setAmount(1 + event.getCurrentItem().getAmount());
                             }
+                            guiObject.callPlaceEvents((Player) event.getWhoClicked(), itemStack.clone());
                         } else if (event.getAction() == InventoryAction.PLACE_ALL || event.getAction() == InventoryAction.SWAP_WITH_CURSOR) {
-                            itemStack = event.getCursor().clone();
-                        }
-
-                        if (itemStack.getType() != Material.AIR) {
+                            ItemStack itemStack = event.getCursor().clone();
                             guiObject.callPlaceEvents((Player) event.getWhoClicked(), itemStack.clone());
                         }
                     } else {
@@ -69,12 +65,10 @@ public class InventoryListener implements Listener {
     @EventHandler
     public void onPlayerDragInventory(InventoryDragEvent event) {
         if (guiInventoryMap.containsKey(event.getInventory())) {
-            for (int slot: event.getRawSlots().toArray(new  Integer[event.getRawSlots().toArray().length])) {
-                if (slot >= 0) {
-                    if (event.getInventory().getSize() > slot) {
-                        event.setCancelled(true);
-                        guiInventoryMap.get(event.getInventory()).callClickEvent(slot, (Player) event.getWhoClicked());
-                    }
+            for (int slot : event.getRawSlots().toArray(new Integer[event.getRawSlots().toArray().length])) {
+                if (slot >= 0 && event.getInventory().getSize() > slot) {
+                    event.setCancelled(true);
+                    guiInventoryMap.get(event.getInventory()).callClickEvent(slot, (Player) event.getWhoClicked());
                 }
             }
         }

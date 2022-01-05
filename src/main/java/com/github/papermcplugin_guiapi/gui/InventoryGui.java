@@ -64,6 +64,7 @@ public class InventoryGui {
                 break;
             }
         }
+
         while (counter <= maxSize) {
             int slot = guiCollection.collectionSlotToActualSlot(counter);
             addGuiObject(slot, new LightBluePlaceHolderGuiObject());

@@ -1,7 +1,9 @@
 package com.github.papermcplugin_guiapi;
 
+import com.github.papermcplugin_guiapi.gui.Hologram;
 import com.github.papermcplugin_guiapi.listener.InventoryListener;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -21,6 +23,19 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(new InventoryListener(), this);
+    }
+
+    /**
+     * The shutdown logic of the plugin
+     *
+     * Delete the Armorstands created by this Plugin
+     *
+     */
+    @Override
+    public void onDisable() {
+        for (Hologram hologram: Hologram.hologramList) {
+            hologram.clear();
+        }
     }
 
 }
