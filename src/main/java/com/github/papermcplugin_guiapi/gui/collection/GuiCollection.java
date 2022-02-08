@@ -47,6 +47,12 @@ public class GuiCollection {
         }
     }
 
+    public GuiCollection(int slot, int height, int width) {
+        this.slot = slot;
+        this.height = height;
+        this.width = width;
+    }
+
     /**
      * Print the GuiCollection into a InventoryGui
      *
