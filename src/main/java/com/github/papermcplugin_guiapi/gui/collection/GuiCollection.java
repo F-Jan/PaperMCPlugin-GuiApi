@@ -166,6 +166,16 @@ public class GuiCollection {
     }
 
     /**
+     * Add a GuiObject by a Location to the GuiCollection
+     *
+     * @param guiLocation
+     * @param guiObject
+     */
+    public void addGuiObject(GuiLocation guiLocation, GuiObject guiObject) {
+        guiObjectMap.put(guiLocation, guiObject);
+    }
+
+    /**
      * Calculate a slot of the collection to an actual slot of an Inventory
      *
      * @param collectionSlot
