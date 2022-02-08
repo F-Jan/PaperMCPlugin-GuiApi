@@ -1,6 +1,5 @@
 package com.github.papermcplugin_guiapi.gui;
 
-import com.github.papermcplugin_guiapi.gui.object.LightBluePlaceHolderGuiObject;
 import com.github.papermcplugin_guiapi.gui.collection.GuiCollection;
 import com.github.papermcplugin_guiapi.gui.object.GuiObject;
 import com.github.papermcplugin_guiapi.listener.InventoryListener;
@@ -51,26 +50,7 @@ public class InventoryGui {
      * @param page
      */
     public void addGuiCollection(GuiCollection guiCollection, int page) {
-        int counter = 0;
-        int maxSize = guiCollection.getHeight() * guiCollection.getWidth() - 1;
-
-        for (GuiObject guiObject: guiCollection.getGuiObjectsByPage(page)) {
-            if (counter <= maxSize) {
-                int slot = guiCollection.collectionSlotToActualSlot(counter);
-                addGuiObject(slot, guiObject);
-                guiCollections[slot] = guiCollection;
-                counter++;
-            } else {
-                break;
-            }
-        }
-
-        while (counter <= maxSize) {
-            int slot = guiCollection.collectionSlotToActualSlot(counter);
-            addGuiObject(slot, new LightBluePlaceHolderGuiObject());
-            guiCollections[slot] = guiCollection;
-            counter++;
-        }
+        guiCollection.print(this, page);
     }
 
     /**

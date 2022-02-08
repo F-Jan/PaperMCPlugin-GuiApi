@@ -3,7 +3,6 @@ package com.github.papermcplugin_guiapi;
 import com.github.papermcplugin_guiapi.gui.Hologram;
 import com.github.papermcplugin_guiapi.listener.InventoryListener;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**

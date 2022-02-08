@@ -2,12 +2,14 @@ package com.github.papermcplugin_guiapi.gui.collection;
 
 import com.github.papermcplugin_guiapi.event.GuiCollectionClickEvent;
 import com.github.papermcplugin_guiapi.gui.InventoryGui;
+import com.github.papermcplugin_guiapi.gui.location.GuiLocation;
 import com.github.papermcplugin_guiapi.gui.object.GuiObject;
+import com.github.papermcplugin_guiapi.gui.object.LightBluePlaceHolderGuiObject;
+import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GuiCollection {
 
@@ -15,18 +17,70 @@ public class GuiCollection {
     private final int height;
     private final int width;
 
-    private final int maxSizePerPage;
-
     private final List<GuiCollectionClickEvent> collectionClickEventList = new ArrayList<>();
-    private final List<GuiObject> guiObjects;
+
+    private final Map<GuiLocation, GuiObject> guiObjectMap = new HashMap<>();
 
     public GuiCollection(int slot, int height, int width, ArrayList<GuiObject> guiObjects) {
         this.slot = slot;
         this.height = height;
         this.width = width;
-        this.guiObjects = guiObjects;
 
-        maxSizePerPage = height * width;
+        int maxSizePerPage = height * width;
+        int pages = maxSizePerPage / guiObjects.size();
+
+        List<GuiLocation> guiLocations = new ArrayList<>();
+
+        for (int page = 1; page <= pages; page++) {
+            for (int temp_height = 1; temp_height <= height; temp_height++) {
+                for (int temp_width = 1; temp_width <= width; temp_width++) {
+                    guiLocations.add(new GuiLocation(temp_width, temp_height, page));
+                }
+            }
+        }
+
+        int i = 0;
+
+        for (GuiObject guiObject : guiObjects) {
+            guiObjectMap.put(guiLocations.get(i), guiObject);
+            i++;
+        }
+    }
+
+    /**
+     * Print the GuiCollection into a InventoryGui
+     *
+     * @param inventoryGui
+     * @param page
+     */
+    public void print(InventoryGui inventoryGui, int page) {
+
+        int temp_slot = slot;
+
+        for (int temp_height = 1; temp_height <= height; temp_height++) {
+            for (int temp_width = 1; temp_width <= width; temp_width++) {
+
+                int finalTemp_width = temp_width;
+                int finalTemp_height = temp_height;
+                int finalTemp_slot = temp_slot;
+                AtomicBoolean found = new AtomicBoolean(false);
+
+                guiObjectMap.forEach((guiLocation, guiObject) -> {
+                    if (guiLocation.getX() == finalTemp_width && guiLocation.getY() == finalTemp_height && guiLocation.getPage() == page) {
+                        found.set(true);
+                        inventoryGui.addGuiObject(finalTemp_slot, guiObject);
+                    }
+                });
+
+                if (!found.get()) {
+                    inventoryGui.addGuiObject(temp_slot, new LightBluePlaceHolderGuiObject());
+                }
+
+                temp_slot++;
+            }
+
+            temp_slot = ((height - 1) * 9) + slot;
+        }
     }
 
     /**
@@ -74,14 +128,41 @@ public class GuiCollection {
      * @param guiObjectToRemove
      */
     public void removeGuiObject(GuiObject guiObjectToRemove) {
-        guiObjects.remove(guiObjectToRemove);
+        guiObjectMap.forEach((guiLocation, guiObject) -> {
+            if (guiObject == guiObjectToRemove) {
+                guiObjectMap.remove(guiLocation);
+            }
+        });
     }
 
     /**
      * Sort the GuiObjects after Material
      */
     public void sortByMaterial() {
+        ArrayList<GuiObject> guiObjects = new ArrayList<>(getGuiObjects());
         guiObjects.sort(Comparator.comparing(guiObject -> guiObject.getItemStack().getType().toString()));
+
+        int maxSizePerPage = height * width;
+        int pages = maxSizePerPage / guiObjects.size();
+
+        List<GuiLocation> guiLocations = new ArrayList<>();
+
+        for (int page = 1; page <= pages; page++) {
+            for (int temp_height = 1; temp_height <= height; temp_height++) {
+                for (int temp_width = 1; temp_width <= width; temp_width++) {
+                    guiLocations.add(new GuiLocation(temp_width, temp_height, page));
+                }
+            }
+        }
+
+        int i = 0;
+
+        guiObjectMap.clear();
+
+        for (GuiObject guiObject : guiObjects) {
+            guiObjectMap.put(guiLocations.get(i), guiObject);
+            i++;
+        }
     }
 
     /**
@@ -116,7 +197,7 @@ public class GuiCollection {
      * @return
      */
     public List<GuiObject> getGuiObjects() {
-        return guiObjects;
+        return guiObjectMap.values().stream().toList();
     }
 
     /**
@@ -127,19 +208,15 @@ public class GuiCollection {
      */
     public List<GuiObject> getGuiObjectsByPage(int page) {
 
-        List<GuiObject> guiObjects = this.guiObjects;
-        GuiObject[] guiObjectsArray = guiObjects.toArray(new GuiObject[maxSizePerPage]);
+        List<GuiObject> guiObjects = new ArrayList<>();
 
-        guiObjectsArray = Arrays.copyOfRange(guiObjectsArray, ((page - 1) * maxSizePerPage), page * maxSizePerPage);
-
-        guiObjects = new ArrayList<>();
-
-        for (GuiObject guiObject : guiObjectsArray) {
-            if (guiObject != null) {
+        guiObjectMap.forEach((guiLocation, guiObject) -> {
+            if (guiLocation.getPage() == page) {
                 guiObjects.add(guiObject);
             }
-        }
+        });
 
         return guiObjects;
     }
+
 }
