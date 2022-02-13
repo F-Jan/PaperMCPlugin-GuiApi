@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  *
  * @author F-Jan
  */
-public final class Main extends JavaPlugin {
+public final class PaperMcPluginGuiApi extends JavaPlugin {
 
     /**
      * The startup logic of the plugin.
