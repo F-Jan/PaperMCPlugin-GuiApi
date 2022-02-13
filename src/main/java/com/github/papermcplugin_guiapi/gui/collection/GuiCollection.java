@@ -7,6 +7,7 @@ import com.github.papermcplugin_guiapi.gui.object.GuiObject;
 import com.github.papermcplugin_guiapi.gui.object.LightBluePlaceHolderGuiObject;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -17,6 +18,8 @@ public class GuiCollection {
     private final int height;
     private final int width;
 
+    private GuiObject placeHolderGuiObject;
+
     private final List<GuiCollectionClickEvent> collectionClickEventList = new ArrayList<>();
 
     private final Map<GuiLocation, GuiObject> guiObjectMap = new HashMap<>();
@@ -25,6 +28,7 @@ public class GuiCollection {
         this.slot = slot;
         this.height = height;
         this.width = width;
+        this.placeHolderGuiObject = new LightBluePlaceHolderGuiObject();
 
         int maxSizePerPage = height * width;
         int pages = maxSizePerPage / guiObjects.size();
@@ -51,6 +55,14 @@ public class GuiCollection {
         this.slot = slot;
         this.height = height;
         this.width = width;
+        this.placeHolderGuiObject = new LightBluePlaceHolderGuiObject();
+    }
+
+    public GuiCollection(int slot, int height, int width, GuiObject placeHolderGuiObject) {
+        this.slot = slot;
+        this.height = height;
+        this.width = width;
+        this.placeHolderGuiObject = placeHolderGuiObject;
     }
 
     /**
@@ -79,7 +91,7 @@ public class GuiCollection {
                 });
 
                 if (!found.get()) {
-                    inventoryGui.addGuiObject(temp_slot, new LightBluePlaceHolderGuiObject());
+                    inventoryGui.addGuiObject(temp_slot, placeHolderGuiObject);
                 }
 
                 temp_slot++;
@@ -139,6 +151,15 @@ public class GuiCollection {
                 guiObjectMap.remove(guiLocation);
             }
         });
+    }
+
+    /**
+     * Set the PlaceHolderGuiObject for the GuiCollection
+     *
+     * @param placeHolderGuiObject
+     */
+    public void setPlaceHolderGuiObject(GuiObject placeHolderGuiObject) {
+        this.placeHolderGuiObject = placeHolderGuiObject;
     }
 
     /**
@@ -234,5 +255,4 @@ public class GuiCollection {
 
         return guiObjects;
     }
-
 }
