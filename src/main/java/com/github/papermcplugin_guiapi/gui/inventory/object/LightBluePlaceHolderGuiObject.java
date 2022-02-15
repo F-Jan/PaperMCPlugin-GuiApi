@@ -1,4 +1,4 @@
-package com.github.papermcplugin_guiapi.gui.object;
+package com.github.papermcplugin_guiapi.gui.inventory.object;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;

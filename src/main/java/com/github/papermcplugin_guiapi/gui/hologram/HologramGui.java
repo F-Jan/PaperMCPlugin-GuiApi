@@ -1,4 +1,4 @@
-package com.github.papermcplugin_guiapi.gui;
+package com.github.papermcplugin_guiapi.gui.hologram;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author F-Jan
  */
-public class Hologram {
+public class HologramGui {
 
     private final double x;
     private final double firstY;
@@ -22,14 +22,14 @@ public class Hologram {
     private final List<String> lineList = new ArrayList<>();
     private final List<ArmorStand> armorStandList = new ArrayList<>();
 
-    public final static List<Hologram> hologramList = new ArrayList<>();
+    public final static List<HologramGui> HOLOGRAM_GUI_LIST = new ArrayList<>();
 
-    public Hologram(double x, double y, double z, int height) {
+    public HologramGui(double x, double y, double z, int height) {
         this.x = x;
         this.firstY = (y - 2.2) + (height * 0.3);
         this.z = z;
 
-        hologramList.add(this);
+        HOLOGRAM_GUI_LIST.add(this);
     }
 
     /**

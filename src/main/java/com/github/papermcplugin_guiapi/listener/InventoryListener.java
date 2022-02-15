@@ -1,7 +1,7 @@
 package com.github.papermcplugin_guiapi.listener;
 
-import com.github.papermcplugin_guiapi.gui.InventoryGui;
-import com.github.papermcplugin_guiapi.gui.object.PlacementGuiObject;
+import com.github.papermcplugin_guiapi.gui.inventory.InventoryGui;
+import com.github.papermcplugin_guiapi.gui.inventory.object.PlacementGuiObject;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

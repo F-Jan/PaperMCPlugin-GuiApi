@@ -1,4 +1,4 @@
-package com.github.papermcplugin_guiapi.gui.location;
+package com.github.papermcplugin_guiapi.gui.inventory.location;
 
 public class GuiLocation {
 

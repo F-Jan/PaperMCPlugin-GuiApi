@@ -1,6 +1,6 @@
 package com.github.papermcplugin_guiapi;
 
-import com.github.papermcplugin_guiapi.gui.Hologram;
+import com.github.papermcplugin_guiapi.gui.hologram.HologramGui;
 import com.github.papermcplugin_guiapi.listener.InventoryListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,8 +32,8 @@ public final class PaperMcPluginGuiApi extends JavaPlugin {
      */
     @Override
     public void onDisable() {
-        for (Hologram hologram: Hologram.hologramList) {
-            hologram.clear();
+        for (HologramGui hologramGui : HologramGui.HOLOGRAM_GUI_LIST) {
+            hologramGui.clear();
         }
     }
 

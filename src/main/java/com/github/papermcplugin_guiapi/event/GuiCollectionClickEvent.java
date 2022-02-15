@@ -1,6 +1,6 @@
 package com.github.papermcplugin_guiapi.event;
 
-import com.github.papermcplugin_guiapi.gui.object.GuiObject;
+import com.github.papermcplugin_guiapi.gui.inventory.object.GuiObject;
 
 /**
  * An Interface to define what happens when you Click the GuiCollection to which the event was added.
