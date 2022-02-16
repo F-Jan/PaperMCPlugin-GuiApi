@@ -93,6 +93,8 @@ public class GuiCollection {
                     inventoryGui.addGuiObject(temp_slot, placeHolderGuiObject);
                 }
 
+                inventoryGui.getGuiCollections()[temp_slot] = this;
+
                 temp_slot++;
             }
 

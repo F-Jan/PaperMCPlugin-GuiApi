@@ -117,4 +117,13 @@ public class InventoryGui {
     public GuiObject[] getGuiObjects() {
         return guiObjects;
     }
+
+    /**
+     * Get a List of all Slots with a GuiCollection
+     *
+     * @return
+     */
+    public GuiCollection[] getGuiCollections() {
+        return guiCollections;
+    }
 }
