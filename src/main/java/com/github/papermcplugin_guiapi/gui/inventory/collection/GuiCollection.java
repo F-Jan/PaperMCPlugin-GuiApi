@@ -5,6 +5,8 @@ import com.github.papermcplugin_guiapi.gui.inventory.InventoryGui;
 import com.github.papermcplugin_guiapi.gui.inventory.location.GuiLocation;
 import com.github.papermcplugin_guiapi.gui.inventory.object.GuiObject;
 import com.github.papermcplugin_guiapi.gui.inventory.object.LightBluePlaceHolderGuiObject;
+import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -94,7 +96,7 @@ public class GuiCollection {
                 temp_slot++;
             }
 
-            temp_slot = ((height - 1) * 9) + slot;
+            temp_slot = (temp_height * 9) + slot;
         }
     }
 
