@@ -83,7 +83,7 @@ public class InventoryGui {
     }
 
     /**
-     * Get the Invenotry of the InventoryGui
+     * Get the Inventory of the InventoryGui
      *
      * @return
      */
