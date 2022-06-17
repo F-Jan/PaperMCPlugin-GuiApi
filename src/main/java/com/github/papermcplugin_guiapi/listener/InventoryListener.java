@@ -24,8 +24,6 @@ public class InventoryListener implements Listener {
 
     /**
      * Code get triggered when an Inventory is Clicked
-     *
-     * @param event
      */
     @EventHandler
     public void onPlayerClickInventory(InventoryClickEvent event) {
@@ -59,8 +57,6 @@ public class InventoryListener implements Listener {
 
     /**
      * Code get triggered when an Item is dragged in an Inventory
-     *
-     * @param event
      */
     @EventHandler
     public void onPlayerDragInventory(InventoryDragEvent event) {

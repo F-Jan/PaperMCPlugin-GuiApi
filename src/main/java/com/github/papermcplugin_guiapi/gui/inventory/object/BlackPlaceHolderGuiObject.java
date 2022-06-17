@@ -14,8 +14,6 @@ public class BlackPlaceHolderGuiObject extends GuiObject{
 
     /**
      * Get the ItemStack in the InventoryGui
-     *
-     * @return
      */
     @Override
     public ItemStack getItemStack() {

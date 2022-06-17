@@ -17,7 +17,6 @@ public final class PaperMcPluginGuiApi extends JavaPlugin {
      * The startup logic of the plugin.
      *
      * The InventoryListener get registered here.
-     *
      */
     @Override
     public void onEnable() {
@@ -28,7 +27,6 @@ public final class PaperMcPluginGuiApi extends JavaPlugin {
      * The shutdown logic of the plugin
      *
      * Delete the Armorstands created by this Plugin
-     *
      */
     @Override
     public void onDisable() {

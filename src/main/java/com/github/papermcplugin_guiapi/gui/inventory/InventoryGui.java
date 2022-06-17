@@ -36,8 +36,6 @@ public class InventoryGui {
 
     /**
      * Shows the InventoryGui to a Player
-     *
-     * @param player
      */
     public void showPlayer(Player player) {
         player.openInventory(inventory);
@@ -45,9 +43,6 @@ public class InventoryGui {
 
     /**
      * Add a Collection to the Gui
-     *
-     * @param guiCollection
-     * @param page
      */
     public void addGuiCollection(GuiCollection guiCollection, int page) {
         guiCollection.print(this, page);
@@ -55,9 +50,6 @@ public class InventoryGui {
 
     /**
      * Add an Object to the Gui
-     *
-     * @param slot
-     * @param guiObject
      */
     public void addGuiObject(int slot, GuiObject guiObject) {
         guiObjects[slot] = guiObject;
@@ -66,9 +58,6 @@ public class InventoryGui {
 
     /**
      * Call to trigger a click Event
-     *
-     * @param slot
-     * @param player
      */
     public void callClickEvent(int slot, Player player) {
         GuiObject guiObject = guiObjects[slot];
@@ -84,8 +73,6 @@ public class InventoryGui {
 
     /**
      * Get the Inventory of the InventoryGui
-     *
-     * @return
      */
     public Inventory getInventory() {
         return inventory;
@@ -93,8 +80,6 @@ public class InventoryGui {
 
     /**
      * Get the Title of the InventoryGui
-     *
-     * @return
      */
     public Component getTitle() {
         return title;
@@ -102,8 +87,6 @@ public class InventoryGui {
 
     /**
      * Get the height (always 9 Slots)
-     *
-     * @return
      */
     public int getHeight() {
         return height;
@@ -111,8 +94,6 @@ public class InventoryGui {
 
     /**
      * Get a List of all GuiObjects of the InventoryGui
-     *
-     * @return
      */
     public GuiObject[] getGuiObjects() {
         return guiObjects;
@@ -120,8 +101,6 @@ public class InventoryGui {
 
     /**
      * Get a List of all Slots with a GuiCollection
-     *
-     * @return
      */
     public GuiCollection[] getGuiCollections() {
         return guiCollections;

@@ -66,9 +66,6 @@ public class GuiCollection {
 
     /**
      * Print the GuiCollection into a InventoryGui
-     *
-     * @param inventoryGui
-     * @param page
      */
     public void print(InventoryGui inventoryGui, int page) {
 
@@ -104,8 +101,6 @@ public class GuiCollection {
 
     /**
      * Get the height (y)
-     *
-     * @return
      */
     public int getHeight() {
         return height;
@@ -113,8 +108,6 @@ public class GuiCollection {
 
     /**
      * Get the width (x)
-     *
-     * @return
      */
     public int getWidth() {
         return width;
@@ -122,9 +115,6 @@ public class GuiCollection {
 
     /**
      * Call to trigger a click Event
-     *
-     * @param slot
-     * @param inventoryGui
      */
     public void callClickEvents(int slot, InventoryGui inventoryGui) {
         for (GuiCollectionClickEvent event : collectionClickEventList) {
@@ -134,8 +124,6 @@ public class GuiCollection {
 
     /**
      * Add a Click Event
-     *
-     * @param event
      */
     public void addClickEvent(GuiCollectionClickEvent event) {
         collectionClickEventList.add(event);
@@ -143,8 +131,6 @@ public class GuiCollection {
 
     /**
      * Remove a GuiObject form the GuiCollection
-     *
-     * @param guiObjectToRemove
      */
     public void removeGuiObject(GuiObject guiObjectToRemove) {
         guiObjectMap.forEach((guiLocation, guiObject) -> {
@@ -156,8 +142,6 @@ public class GuiCollection {
 
     /**
      * Set the PlaceHolderGuiObject for the GuiCollection
-     *
-     * @param placeHolderGuiObject
      */
     public void setPlaceHolderGuiObject(GuiObject placeHolderGuiObject) {
         this.placeHolderGuiObject = placeHolderGuiObject;
@@ -195,9 +179,6 @@ public class GuiCollection {
 
     /**
      * Add a GuiObject by a Location to the GuiCollection
-     *
-     * @param guiLocation
-     * @param guiObject
      */
     public void addGuiObject(GuiLocation guiLocation, GuiObject guiObject) {
         guiObjectMap.put(guiLocation, guiObject);
@@ -205,9 +186,6 @@ public class GuiCollection {
 
     /**
      * Calculate a slot of the collection to an actual slot of an Inventory
-     *
-     * @param collectionSlot
-     * @return
      */
     public int collectionSlotToActualSlot(int collectionSlot) {
         int frontX = slot;
@@ -231,8 +209,6 @@ public class GuiCollection {
 
     /**
      * Get a List of all GuiObjects of the Collection
-     *
-     * @return
      */
     public List<GuiObject> getGuiObjects() {
         return guiObjectMap.values().stream().toList();
@@ -240,9 +216,6 @@ public class GuiCollection {
 
     /**
      * Get a List of GuiObjects from a Single page of the Collection
-     *
-     * @param page
-     * @return
      */
     public List<GuiObject> getGuiObjectsByPage(int page) {
 

@@ -19,8 +19,6 @@ public class PlacementGuiObject extends GuiObject {
 
     /**
      * Add an empty Slot as ItemStack in the InventoryGui
-     *
-     * @return
      */
     @Override
     public ItemStack getItemStack() {
@@ -29,9 +27,6 @@ public class PlacementGuiObject extends GuiObject {
 
     /**
      * Trigger the PlaceEvent of the Object
-     *
-     * @param player
-     * @param itemStack
      */
     public void callPlaceEvents(Player player, ItemStack itemStack) {
         for (GuiObjectPlaceEvent event : guiObjectPlaceEventList) {
@@ -41,8 +36,6 @@ public class PlacementGuiObject extends GuiObject {
 
     /**
      * Add an Event which get triggered when the Player place an ItemStack Into this GuiObject
-     *
-     * @param event
      */
     public void addGuiObjectPlaceEvent(GuiObjectPlaceEvent event) {
         guiObjectPlaceEventList.add(event);

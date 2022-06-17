@@ -34,8 +34,6 @@ public class HologramGui {
 
     /**
      * Add a line to the Hologram
-     *
-     * @param message
      */
     public void addLine(String message) {
         Location location = new Location(Bukkit.getWorld("world"), x, firstY - lineList.toArray().length * 0.3, z);
