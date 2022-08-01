@@ -18,10 +18,10 @@ Now you can create an InventoryGui and add GuiObjects like this.
 InventoryGui inventoryGui = new InventoryGui(4, Component.text("MyInventoryGui"));
 
 //Create an CustomGuiObject with an Bread as an Item
-CustomGuiObject customGuiObject = new CustomGuiObject(new ItemStack(Material.BREAD));
+GuiObject guiObject = new GuiObject(new ItemStack(Material.BREAD));
 
 //Add the CustomGuiObject to the InventoryGui
-inventoryGui.addGuiObject(0, customGuiObject);
+inventoryGui.addGuiObject(0, guiObject);
 ```
 Have Fun! :)
 
