@@ -1,7 +1,7 @@
-package com.github.papermcplugin_guiapi;
+package io.github.f_jan.papermcplugin_guiapi;
 
-import com.github.papermcplugin_guiapi.gui.hologram.HologramGui;
-import com.github.papermcplugin_guiapi.listener.InventoryListener;
+import io.github.f_jan.papermcplugin_guiapi.gui.hologram.HologramGui;
+import io.github.f_jan.papermcplugin_guiapi.listener.InventoryListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

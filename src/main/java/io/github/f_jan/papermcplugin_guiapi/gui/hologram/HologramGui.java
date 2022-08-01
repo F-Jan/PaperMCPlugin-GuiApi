@@ -1,4 +1,4 @@
-package com.github.papermcplugin_guiapi.gui.hologram;
+package io.github.f_jan.papermcplugin_guiapi.gui.hologram;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

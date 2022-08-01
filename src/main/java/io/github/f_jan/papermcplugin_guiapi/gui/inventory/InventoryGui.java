@@ -1,8 +1,8 @@
-package com.github.papermcplugin_guiapi.gui.inventory;
+package io.github.f_jan.papermcplugin_guiapi.gui.inventory;
 
-import com.github.papermcplugin_guiapi.gui.inventory.collection.GuiCollection;
-import com.github.papermcplugin_guiapi.gui.inventory.object.GuiObject;
-import com.github.papermcplugin_guiapi.listener.InventoryListener;
+import io.github.f_jan.papermcplugin_guiapi.gui.inventory.collection.GuiCollection;
+import io.github.f_jan.papermcplugin_guiapi.gui.inventory.object.GuiObject;
+import io.github.f_jan.papermcplugin_guiapi.listener.InventoryListener;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

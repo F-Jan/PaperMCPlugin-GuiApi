@@ -1,4 +1,4 @@
-package com.github.papermcplugin_guiapi.event;
+package io.github.f_jan.papermcplugin_guiapi.event;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

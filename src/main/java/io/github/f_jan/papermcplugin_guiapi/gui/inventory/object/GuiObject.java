@@ -1,6 +1,6 @@
-package com.github.papermcplugin_guiapi.gui.inventory.object;
+package io.github.f_jan.papermcplugin_guiapi.gui.inventory.object;
 
-import com.github.papermcplugin_guiapi.event.GuiObjectClickEvent;
+import io.github.f_jan.papermcplugin_guiapi.event.GuiObjectClickEvent;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

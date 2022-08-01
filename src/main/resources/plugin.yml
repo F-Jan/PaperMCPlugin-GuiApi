@@ -1,6 +1,6 @@
 name: PaperMcPlugin-GuiApi
 version: '${version}'
-main: com.github.papermcplugin_guiapi.PaperMcPluginGuiApi
+main: io.github.f_jan.papermcplugin_guiapi.PaperMcPluginGuiApi
 api-version: 1.17
 authors: [ F-Jan ]
 description: Make a Minecraft-Gui with PaperMC.

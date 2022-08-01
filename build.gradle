@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'de.junkie'
+group = 'io.github.f_jan'
 version = '1.0'
 
 repositories {

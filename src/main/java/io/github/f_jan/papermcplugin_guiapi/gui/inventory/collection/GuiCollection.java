@@ -1,12 +1,10 @@
-package com.github.papermcplugin_guiapi.gui.inventory.collection;
+package io.github.f_jan.papermcplugin_guiapi.gui.inventory.collection;
 
-import com.github.papermcplugin_guiapi.event.GuiCollectionClickEvent;
-import com.github.papermcplugin_guiapi.gui.inventory.InventoryGui;
-import com.github.papermcplugin_guiapi.gui.inventory.location.GuiLocation;
-import com.github.papermcplugin_guiapi.gui.inventory.object.GuiObject;
-import com.github.papermcplugin_guiapi.gui.inventory.object.LightBluePlaceHolderGuiObject;
-import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
+import io.github.f_jan.papermcplugin_guiapi.event.GuiCollectionClickEvent;
+import io.github.f_jan.papermcplugin_guiapi.gui.inventory.InventoryGui;
+import io.github.f_jan.papermcplugin_guiapi.gui.inventory.location.GuiLocation;
+import io.github.f_jan.papermcplugin_guiapi.gui.inventory.object.GuiObject;
+import io.github.f_jan.papermcplugin_guiapi.gui.inventory.object.LightBluePlaceHolderGuiObject;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
